@@ -51,6 +51,8 @@
             $_SESSION['e_regulamin']="Regulamin nie zaznaczony";
            }
       
+      
+      
       $sekret = "6Lfb1goUAAAAAO8dtseUJNsduYaU_FyJ8kYBBFCb";
       $sprawdz = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret='.$sekret.'&response='.$_POST['g-recaptcha-response']);
       
@@ -149,6 +151,9 @@
 	<meta charset="utf-8" />
 	<title>Załóż konto</title>
 	<script src='https://www.google.com/recaptcha/api.js'></script>
+		<link href="css/styles_order.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	
 	
 	
@@ -164,12 +169,21 @@
 </head>
 
 <body>
+   
+   
 
+	<a href="zaloguj.php">Powrót do logowania</a>
 	
+		<div class="container">
+		<h2>Rejestracja</h2>
 	<form method="post">
    
-   
-	   Nickname: <br/> <input type="text" name="nick"/> <br/>
+      
+       <div class="form-group">
+      <label for="email">Nickname:</label>
+      <input type="text" class="form-control" name="nick" placeholder="nick">
+    </div>
+    
 	   <?php
          if(isset($_SESSION['e_nick']))
          {
@@ -179,8 +193,11 @@
        ?>
        
 	   
-	   
-	   E-mail: <br/> <input type="email" name="email"/> <br/>
+	   <div class="form-group">
+      <label for="email">E-mail:</label>
+      <input type="email" class="form-control" name="email" placeholder="email">
+    </div>
+    
 	   
 	       <?php
          if(isset($_SESSION['e_email']))
@@ -191,7 +208,11 @@
        ?>
 	   
 	   
-	   Twoje hasło: <br/> <input type="password" name="haslo1"/> <br/>
+	   	   <div class="form-group">
+      <label for="email">Twoje hasło:</label>
+      <input type="password" class="form-control" name="haslo1" placeholder="hasło">
+    </div>
+    
 	    <?php
          if(isset($_SESSION['e_haslo']))
          {
@@ -200,7 +221,12 @@
          }
        ?>
        
-	   Powtórz hasło: <br/> <input type="password" name="haslo2"/> <br/>
+       
+          	   <div class="form-group">
+      <label for="password">Powtórz hasło:</label>
+      <input type="password" class="form-control" name="haslo2" placeholder="powtórz hasło">
+    </div>
+    
 	      <?php
          if(isset($_SESSION['e_haslo2']))
          {
@@ -210,9 +236,12 @@
        ?>
 	   
 	   
+
+	   
 	   <label>
 	   <input type="checkbox" name="regulamin"/>Akceptuję reglamin
 	   </label>
+	   
 	    <?php
          if(isset($_SESSION['e_regulamin']))
          {
@@ -221,7 +250,7 @@
          }
        ?>
 	   
-	   <div class="g-recaptcha" data-sitekey="6Lfb1goUAAAAAD5JBOTF0UOT-DH9b4BJJxx9ZI9H"></div>
+	  
 	   
 	   <?php
             if(isset($_SESSION['e_captcha']))
@@ -230,13 +259,16 @@
                unset($_SESSION['e_captcha']);
             }
        ?>
+       
+        <div class="g-recaptcha" data-sitekey="6Lfb1goUAAAAAD5JBOTF0UOT-DH9b4BJJxx9ZI9H"></div>
 	   
 	   <br/>
 	   
-	   <input type="submit" value="Zarejestruj się">
+	   
+	   <button type="submit" value="Zaloguj się" class="btn btn-default">Zarejestruj się</button>
 	   
 	</form>
-	
+   </div>
 
 	
 

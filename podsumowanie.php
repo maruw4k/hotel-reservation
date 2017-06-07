@@ -9,8 +9,11 @@
    $telefon = $_POST['telefon'];
    $liczba_nocy = $_POST['liczba_nocy'];
    $data = $_POST['data'];
-   $wybrany_pokoj = $_POST['rodzaj'];
+   $id_pokoju = $_POST['rodzaj'];
    $dodatkowe_info = $_POST['dodatkowe_info'];
+
+   $dzisiaj = date("Y-m-d");
+
 
       
    if(isset($_POST['dodatkowe_lozko'])) 
@@ -38,35 +41,45 @@
          
          else
          {
-          
             
             
-            if($polaczenie->query("INSERT INTO rezerwacje VALUES(NULL, '$wybrany_pokoj', '$data', '$liczba_nocy', '$telefon', '$imie', '$dodatkowe_info', '{$_SESSION['id']}', '$dodatkowe_lozko')")==false)
+            $rezultat = $polaczenie->query("SELECT * FROM pokoje WHERE pokoje.id='$id_pokoju'");
+            if(!$rezultat)
             {
-               echo "Nie udało się wprowadzić danych";
-            }
- 
-            }
-
-                  
-         } 
-
-      catch(Exception $e)
-      {
-         echo "Błąd serwera, zapraszamy kiedy indziej" ;
-         echo '<br />Informacja deweloperska'.$e;
-      }
-   
-   
-   
-   
-   
-echo<<<END
+                  echo 'Nie można uruchomić zapytania: ' . mysqli_error();
+                  exit;
+               }
+    
+            $wiersz = $rezultat->fetch_assoc();
+            $wolne_miejsca = $wiersz['wolne_miejsca'];
+            $id = $wiersz['id'];
+            
+            
+            
+               if($data>$dzisiaj)
+               {
+                  if($wolne_miejsca>0)
+                  {
+            
+                           if(($polaczenie->query("SELECT * FROM `rezerwacje` JOIN uzytkownicy ON rezerwacje.id_usera=uzytkownicy.id WHERE user='{$_SESSION['user']}'")->num_rows)<1)
+                           {
 
 
-	<h2>Podsumowanie zamówienia</h2>
+                           $polaczenie->query(("INSERT INTO rezerwacje VALUES(NULL, '$id_pokoju', '$data', '$liczba_nocy', '$telefon', '$imie', '$dodatkowe_info', '{$_SESSION['id']}', '$dodatkowe_lozko', NULL)"));
+                              
+                              
+                            $polaczenie->query(("UPDATE `pokoje` SET wolne_miejsca:= wolne_miejsca-1 WHERE pokoje.id='$id_pokoju'"));   
+                              
+                           
+
+
+
+                 echo<<<END
+
+      <div class="container"> 
+	<h2>Podsumowanie rezerwacji</h2>
 	
-	<table border="1" cellpadding="10" cellspacing="0">
+	<table class="table">
 	<tr>
 		<td>Imię i nazwisko</td> <td>$imie</td>
 	</tr>
@@ -83,17 +96,56 @@ echo<<<END
 		<td>Dodatkowe łóżko</td> <td>$dodatkowe_lozko</td>
 	</tr>
     <tr>
-		<td>Rodzaj wybranego pokoju</td> <td>$wybrany_pokoj</td>
+		<td>Rodzaj wybranego pokoju</td> <td>$id_pokoju</td>
 	</tr>
      <tr>
 		<td>Dodatkowe info</td> <td>$dodatkowe_info</td>
 	</tr>
 	</table>
     
-	<br /><a href="zamowienie.php">Powrót do formularza</a>
+	<br /><a class='powrot_do_formularza' href="zamowienie.php">Powrót do formularza</a>
+    </div>
 
 END;
+
+
+            }
+                
+         else
+            {
+            echo "<label class='message'>Niestety nie udało się wprowadzić danych. Do bazy mozna wprowadzic tylko jedno zamowienie.&nbsp;&nbsp;</label>"; 
+            echo "<br /><a class='powrot_do_formularza' href='zamowienie.php'>Powrót do formularza</a>";
+            } 
+            
+            
+            
+                  } 
+            else 
+            {
+               echo "<label class='message'>Brak wolnych miejsc.&nbsp;&nbsp;</label>"; 
+               echo "<br /><a class='powrot_do_formularza' href='zamowienie.php'>Powrót do formularza</a>";
+            }
+   }
+   else
+   {
+       echo "<label class='message'>Ustaw datę rezerwacji w przyszłości.&nbsp;&nbsp;</label>";
+       echo "<br /><a class='powrot_do_formularza' href='zamowienie.php'>Powrót do formularza</a>";
+   }
+  } //else z pierwszego ifa
+      } //try
+      
+
+      catch(Exception $e)
+      {
+         echo "Błąd serwera, zapraszamy kiedy indziej" ;
+         echo '<br />Informacja deweloperska'.$e;
+      }
+      
    
+   
+   
+   
+
    ?>
 
 

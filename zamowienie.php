@@ -17,28 +17,37 @@
    
       ?>
    
+   
+   <div class="container">
+   <h2>Nowa rezerwacja pokoju</h2>
    <form action="podsumowanie.php" method="post">
      
-      <h2>Nowa rezerwacja pokoju</h2>
       
-      <div>   
-      <label>Rodzaj pokoju</label>
-      <select size="1" label_over="0" hide_label="0" type="select" name="rodzaj">
+      
+      <div class="form-group">   
+      
+      <label for="rodzaj">Rodzaj pokoju:</label>
+      
+
+      <select type="select" class="form-control" name="rodzaj">
          <option value="">- wybierz rodzaj pokoju -</option>
-         <option value="2osobowy">Pokój 2 osobowy (koszt 140zł)</option>
-         <option value="3osobowy">Pokój 3 osobowy (koszt 160zł)</option>
+         <option value="1">1: Pokój 2 osobowy (koszt 140zł)</option>
+         <option value="2">2: Pokój 3 osobowy (koszt 160zł)</option>
       </select>
       </div>
       
-      <div>
-      <label>Data przyjazdu</label>
-      <input maxlength="150" size="16" title="" label_over="0" hide_label="0" type="date" value="" name="data">
+      <div class="form-group">
+      
+      <label for="data">Data przyjazdu</label>
+      
+      <input class="form-control" maxlength="150" type="date" name="data">
       </div>
       
       
-      <div>
-      <label>Liczba nocy</label>
-      <select size="1" label_over="0" hide_label="0" type="select" name="liczba_nocy">
+      <div class="form-group">
+      <label for="liczba_nocy">Liczba nocy</label>
+
+      <select class="form-control" size="1" label_over="0" hide_label="0" type="select" name="liczba_nocy">
          <option value="">- wybierz liczbę nocy -</option>
          <option value="1">1</option>
          <option value="2">2</option>
@@ -58,33 +67,35 @@
          </select>
       </div>
         
-            <div>
+            <div class="form-group">
        
-                <label>
-	   <input type="checkbox" name="dodatkowe_lozko"/>Czy dodać dodatkowe łóżko?
+                <label for="dodatkowe łóżko"> Czy dodać dodatkowe łóżko?</label>
+	   <input type="checkbox" name="dodatkowe_lozko"/>
 	   </label>
         
          </div>
          
-         <div>
-            <label>Imię i nazwisko</label>
-            <input maxlength="150" size="30" title="" label_over="0" hide_label="0" type="text" value="" name="imie_nazwisko">
+         <div class="form-group">
+            <label for="imie_nazwisko">Imię i nazwisko</label>
+            <input class="form-control" maxlength="150" size="30" title="" label_over="0" hide_label="0" type="text" value="" name="imie_nazwisko">
          </div>
          
-         <div>
-            <label>Telefon kontaktowy</label>
-            <input maxlength="150" size="30" title="" label_over="0" hide_label="0" type="text" value="" name="telefon">
+         <div class="form-group">
+            <label for="telefon">Telefon kontaktowy</label>
+            <input class="form-control" maxlength="150" size="30" title="" label_over="0" hide_label="0" type="text" value="" name="telefon">
          </div>
          
             
-         <div>
+         <div class="form-group">
 
-            <label>Dodatkowe informacje</label>
-            <input type="text" name="dodatkowe_info">
+            <label for="dodatkowe_info">Dodatkowe informacje</label>
+            <input class="form-control" type="text" name="dodatkowe_info">
          </div>
 
 
-         <input name="input_submit_2" value="Wyślij" type="submit">
+         <input class="btn btn-default" name="input_submit_2" value="Wyślij" type="submit">
+     
+      </div>
 
    </form>
 

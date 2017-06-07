@@ -10,6 +10,10 @@
 
  
 	<link href="css/style.css" rel="stylesheet">
+  
+  <link href="css/styles_order.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script
 
   
 
@@ -21,9 +25,11 @@
 
      <?php
 
-      echo "<p>Jesteś zalogowany na konto: ".$_SESSION['user'].'&#9;<a href="include/logout.php">Wyloguj się</a>';
+      echo "<p>Jesteś zalogowany na konto: ".$_SESSION['user'].'&#9;<a href="include/logout.php">Wyloguj się</a>'; 
       echo "<p>Twój email: ".$_SESSION['email']." </br>";
-      echo "<p><a href=lista_zamowien.php> Pokaz moją rezerwację</a>";
+      echo "<p class='rezerwacja'><a href=lista_zamowien.php> Pokaż moją rezerwację</a>";
+     
+      
 
    
 
