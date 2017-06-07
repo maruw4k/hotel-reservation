@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+   <meta charset="UTF-8">
+   <title>Karkonosze</title>
+   <meta name="keywords" content="karokonosze góry polska">
+   <meta name="author" content="Marek Krzeszowiec">
+   <link rel="stylesheet" href="css/styles.css"> </head>
+
+<body>
+  
+   <header class="page-header">
+      <div class="sky">
+         <div class="clouds_one"></div>
+         <div class="clouds_two"></div>
+         <div class="clouds_three"></div>
+         <div class="container-header">
+            <a href="index.html">
+               <h1 class="page-title">Karkonosze</h1>
+               <nav class="page-nav">
+                  <ul>
+                     <li><a href="oferta.html">Oferta</a></li>
+                     <li><a class="active-page" href="galeria.html">Galeria</a></li>
+                     <li><a href="stolowe.html">Góry stołowe</a></li>
+                     <li><a href="miedzygorze.html">Międzygórze</a></li>
+                     <li><a href="sowie.html">Góry sowie</a></li>
+                  </ul>
+               </nav>
+            </a>
+         </div>
+      </div>
+   </header>
+   
+   <main>
+      <!-- Lightbox usage markup -->
+      <section id="gallery">
+         <!-- thumbnail image wrapped in a link -->
+         <section class="item">
+            <a href="#img1"> <img src="img/img1.jpg"> </a>
+         </section>
+         <section class="item">
+            <a href="#img2"> <img src="img/img2.jpg"> </a>
+         </section>
+         <section class="item">
+            <a href="#img3"> <img src="img/img3.jpg"> </a>
+         </section>
+         <section class="item">
+            <a href="#img4"> <img src="img/img4.jpg"> </a>
+         </section>
+         <section class="item">
+            <a href="#img5"> <img src="img/img5.jpg"> </a>
+         </section>
+         <section class="item">
+            <a href="#img6"> <img src="img/img6.jpg"> </a>
+         </section>
+      </section>
+      <!-- lightbox container hidden with CSS -->
+      <div class="lightbox" id="img1">
+         <div class="box"> <a class="close" href="galeria.html">X</a>
+            <p class="title">Karkonosze, w oddali Strzecha Akademicka</p>
+            <div class="content"> <img src="img/img1.jpg">
+               <p class="desc">źródło: http://podroze.onet.pl/karkonosze</p>
+            </div> <a class="prev" href="#img3">Poprzedni</a> <a class="next" href="#img2">Następny</a>
+            <div class="clear"></div>
+         </div>
+      </div>
+      <div class="lightbox" id="img2">
+         <div class="box"> <a class="close" href="#">X</a>
+            <p class="title">Śnieżne kotły w Karkonoszach.</p>
+            <div class="content"> <img src="img/img2.jpg">
+               <p class="desc">źródło: http://karkonosze.pl/karkonosze/</p>
+            </div> <a class="prev" href="#img2">Poprzedni</a> <a class="next" href="#img3">Następny</a>
+            <div class="clear"></div>
+         </div>
+      </div>
+      <div class="lightbox" id="img3">
+         <div class="box"> <a class="close" href="#">X</a>
+            <p class="title">Karpacz z lotu ptaka</p>
+            <div class="content"> <img src="img/img3.jpg">
+               <p class="desc">źródło: www.karkonosze.pl/karpacz-galeria-zdjec-z-lotu-ptaka</p>
+            </div> <a class="prev" href="#img2">Poprzedni</a> <a class="next" href="#img4">Następny</a>
+            <div class="clear"></div>
+         </div>
+      </div>
+      <div class="lightbox" id="img4">
+         <div class="box"> <a class="close" href="#">X</a>
+            <p class="title">Szklarska Poręba Jakuszyce.</p>
+            <div class="content"> <img src="img/img4.jpg">
+               <p class="desc">źródło: www.domek.karkonosze.pl/</p>
+            </div> <a class="prev" href="#img3">Poprzedni</a> <a class="next" href="#img5">Następny</a>
+            <div class="clear"></div>
+         </div>
+      </div>
+      <div class="lightbox" id="img5">
+         <div class="box"> <a class="close" href="#">X</a>
+            <p class="title">Cieplice z lotu ptaka.</p>
+            <div class="content"> <img src="img/img5.jpg">
+               <p class="desc">źródło: www.karkonosze.pl/cieplice-z-lotu-ptaka/</p>
+            </div> <a class="prev" href="#img4">Poprzedni</a> <a class="next" href="#img6">Następny</a>
+            <div class="clear"></div>
+         </div>
+      </div>
+      <div class="lightbox" id="img6">
+         <div class="box"> <a class="close" href="#">X</a>
+            <p class="title">Karkonoski fen</p>
+            <div class="content"> <img src="img/img6.jpg">
+               <p class="desc">źródło: https://pl.wikipedia.org/wiki/Plik:Karkonoski_Fen.jpg</p>
+            </div> <a class="prev" href="#img5">Poprzedni</a> <a class="next" href="#img1">Następny</a>
+            <div class="clear"></div>
+         </div>
+      </div>
+   </main>
+   
+</body>
+
+</html>
